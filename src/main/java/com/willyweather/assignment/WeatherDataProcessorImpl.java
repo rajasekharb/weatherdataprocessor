@@ -5,8 +5,6 @@ import com.willyweather.assignment.exceptions.FileExtractionException;
 import com.willyweather.assignment.model.HistoricalWeatherData;
 import com.willyweather.assignment.processors.FieldProcessor;
 import com.willyweather.assignment.processors.FieldProcessorFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,8 +15,6 @@ import java.io.File;
  */
 @Component
 class WeatherDataProcessorImpl implements WeatherDataProcessor {
-
-    private static final Logger logger = LoggerFactory.getLogger(WeatherDataProcessorImpl.class);
 
     private final FileDownloader fileDownloader;
     private final FileExtractor fileExtractor;
@@ -47,10 +43,6 @@ class WeatherDataProcessorImpl implements WeatherDataProcessor {
             throw new FileExtractionException("File extraction is not successful");
         }
 
-        if (logger.isDebugEnabled()) {
-            logger.debug("File is successfully downloaded and unzipped");
-        }
-
         //Get the field and validate with the Headers enum
         final String argument = getFieldValue();
         validateArgument(argument);
@@ -71,6 +63,10 @@ class WeatherDataProcessorImpl implements WeatherDataProcessor {
     }
 
     private void validateArgument(String argument) {
+        if (argument == null || "".equals(argument.trim())) {
+            throw new IllegalArgumentException("Argument can't be null or empty");
+        }
+
         if (!Headers.isValid(argument)) {
             throw new IllegalArgumentException(String.format("The parameter %s is invalid",
                     argument));

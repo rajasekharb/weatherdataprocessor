@@ -3,8 +3,6 @@ package com.willyweather.assignment;
 import com.willyweather.assignment.exceptions.DataProcessingException;
 import com.willyweather.assignment.model.HistoricalWeatherData;
 import com.willyweather.assignment.model.WeatherDataModel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -18,8 +16,6 @@ import java.util.List;
 @Component
 public class FileReader {
 
-    private static final Logger logger = LoggerFactory.getLogger(FileReader.class);
-
     HistoricalWeatherData getHistoricalWeatherData(File weatherDataFile) {
         HistoricalWeatherData historicalWeatherData = new HistoricalWeatherData();
         List<WeatherDataModel> weatherDataModelList = new ArrayList<>();
@@ -31,10 +27,8 @@ public class FileReader {
                      StandardCharsets.UTF_8))) {
             String line = bufferedReader.readLine();
 
-
-            if (logger.isInfoEnabled()) {
-                logger.info("Parsing the file with the header \n" + line);
-            }
+            System.out.println("Header is ");
+            System.out.println(line);
 
             while ((line = bufferedReader.readLine()) != null) {
                 final String[] values = line.split("\\s+");
