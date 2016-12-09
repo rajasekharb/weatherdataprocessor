@@ -3,6 +3,8 @@ package com.willyweather.assignment.model;
 import java.util.List;
 
 /**
+ * A simple data structure to hold all the file data
+ *
  * @author Rajasekhar
  */
 public class WeatherData {

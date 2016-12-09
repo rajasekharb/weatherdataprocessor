@@ -1,6 +1,8 @@
 package com.willyweather.assignment;
 
 /**
+ * Enum of all columns of the file
+ *
  * @author Rajasekhar
  */
 enum Headers {
@@ -16,6 +18,7 @@ enum Headers {
         this.name = name;
     }
 
+    //Checks whether argument is valid column/field value or not
     public static boolean isValid(String argument) {
         for (Headers header : Headers.values()) {
             if (header.getName().equalsIgnoreCase(argument)) {

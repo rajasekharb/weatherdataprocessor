@@ -18,6 +18,7 @@ class WeatherDataProcessorImpl implements WeatherDataProcessor {
     private final FileReader fileReader;
     private final FieldProcessorFactory fieldProcessorFactory;
 
+    //Constructor injection is preferred over setter injection via xml configuration
     public WeatherDataProcessorImpl(Downloader fileDownloader, FileExtractor fileExtractor,
                                     FieldProcessorFactory fieldProcessorFactory, FileReader
                                             fileReader) {

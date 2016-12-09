@@ -6,8 +6,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Application {
 
     public static void main(String[] args) {
+        //Read application context from xml
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext
                 ("applicationContext.xml");
+
         final WeatherDataProcessor dataProcessor = applicationContext.getBean
                 (WeatherDataProcessor.class);
         final String processedData = dataProcessor.getProcessedData();

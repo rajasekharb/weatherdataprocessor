@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Parses and reads the .op model file
+ *
  * @author Rajasekhar
  */
 class OpFileReader implements FileReader {

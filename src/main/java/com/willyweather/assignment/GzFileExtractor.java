@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.zip.GZIPInputStream;
 
 /**
+ * Extracts op.gz files
+ *
  * @author Rajasekhar
  */
 class GzFileExtractor implements FileExtractor {

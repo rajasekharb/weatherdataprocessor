@@ -6,6 +6,8 @@ import com.willyweather.assignment.model.WeatherDataModel;
 import java.util.List;
 
 /**
+ * Processes the TEMP field. Ignores the value that comes after space in the TEMP column
+ *
  * @author Rajasekhar
  */
 public class TemperatureProcessor extends AbstractProcessor {

@@ -14,8 +14,8 @@ import java.net.URL;
 class FileDownloader implements Downloader {
 
     private final String url;
-    private String extractLocation;
     private final String filename;
+    private String extractLocation;
 
     public FileDownloader(String url, String extractLocation, String filename) {
         this.url = url;
@@ -23,6 +23,7 @@ class FileDownloader implements Downloader {
         this.filename = filename;
     }
 
+    //Downloads from internet
     @Override
     public File downloadFile() {
         URL downloadUrl;
@@ -42,7 +43,7 @@ class FileDownloader implements Downloader {
             FileUtils.copyURLToFile(downloadUrl, destination);
         } catch (IOException ex) {
             throw new FileDownloadException(String.format("An exception occurred while " +
-                    "downloading the file from %s", downloadUrl), ex);
+                    "downloading the file from %s", this.url), ex);
         }
 
         return destination;

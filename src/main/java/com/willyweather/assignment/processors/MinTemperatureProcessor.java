@@ -6,6 +6,8 @@ import com.willyweather.assignment.model.WeatherDataModel;
 import java.util.List;
 
 /**
+ * Processes the MIN field. Ignores the last character of the value * (asterisk)
+ *
  * @author Rajasekhar
  */
 public class MinTemperatureProcessor extends AbstractProcessor {

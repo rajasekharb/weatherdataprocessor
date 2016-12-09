@@ -19,11 +19,11 @@
     <bean id="fileExtractor" class="com.willyweather.assignment.GzFileExtractor"/>
 
     <bean id="applicationContextProvider"
-          class="com.willyweather.assignment.ApplicationContextProvider"/>
+          class="com.willyweather.assignment.utils.ApplicationContextProvider"/>
 
     <bean id="fieldProcessorFactory"
           class="com.willyweather.assignment.processors.FieldProcessorFactory">
-        <constructor-arg ref="applicationContextProvider"/>
+        <constructor-arg name="contextProvider" ref="applicationContextProvider"/>
     </bean>
 
     <bean id="fileReader" class="com.willyweather.assignment.OpFileReader"/>

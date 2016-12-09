@@ -6,6 +6,8 @@ import com.willyweather.assignment.model.WeatherDataModel;
 import java.util.List;
 
 /**
+ * Processes the DEWP field. Ignores the value that comes after space in the DEWP column
+ *
  * @author Rajasekhar
  */
 public class MeanDewPointProcessor extends AbstractProcessor {

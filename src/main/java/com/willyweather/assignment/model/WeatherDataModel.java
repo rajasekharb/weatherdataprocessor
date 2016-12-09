@@ -1,6 +1,8 @@
 package com.willyweather.assignment.model;
 
 /**
+ * A pojo class to hold one row of the data file
+ *
  * @author Rajasekhar
  */
 @SuppressWarnings("unused")

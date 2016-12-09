@@ -1,4 +1,4 @@
-package com.willyweather.assignment;
+package com.willyweather.assignment.utils;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -11,6 +11,10 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 /**
+ * Captures the Before event, After event and AfterThrowing events
+ * <p>
+ * For logging purposes
+ *
  * @author Rajasekhar
  */
 @Aspect

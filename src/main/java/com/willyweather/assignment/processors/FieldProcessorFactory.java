@@ -1,6 +1,6 @@
 package com.willyweather.assignment.processors;
 
-import com.willyweather.assignment.ApplicationContextProvider;
+import com.willyweather.assignment.utils.ApplicationContextProvider;
 import com.willyweather.assignment.exceptions.DataProcessingException;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.context.ApplicationContext;

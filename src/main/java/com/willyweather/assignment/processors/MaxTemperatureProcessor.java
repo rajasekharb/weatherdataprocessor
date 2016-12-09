@@ -6,6 +6,7 @@ import com.willyweather.assignment.model.WeatherDataModel;
 import java.util.List;
 
 /**
+ * Processes the MAX field. Ignores the last character of the value * (asterisk)
  * @author Rajasekhar
  */
 public class MaxTemperatureProcessor extends AbstractProcessor {
