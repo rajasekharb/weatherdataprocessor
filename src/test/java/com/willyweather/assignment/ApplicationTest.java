@@ -1,34 +1,52 @@
 package com.willyweather.assignment;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import com.willyweather.assignment.exceptions.DataProcessingException;
+import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
-public class ApplicationTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public ApplicationTest(String testName) {
-        super(testName);
+public class ApplicationTest {
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testEmptyArgument() {
+        System.setProperty("field", "");
+        Application.main(new String[1]);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(ApplicationTest.class);
+    @Test
+    public void testTemp() {
+        System.setProperty("field", "TEMP");
+        Application.main(new String[1]);
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp() {
-        assertTrue(true);
+    @Test
+    public void testDewp() {
+        System.setProperty("field", "DEWP");
+        Application.main(new String[1]);
     }
 
+    @Test
+    public void testMin() {
+        System.setProperty("field", "MIN");
+        Application.main(new String[1]);
+    }
+
+    @Test
+    public void testMAX() {
+        System.setProperty("field", "MAX");
+        Application.main(new String[1]);
+    }
+
+    @Test(expected = DataProcessingException.class)
+    public void testSlp() {
+        System.setProperty("field", "SLP");
+        Application.main(new String[1]);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIncorrectData() {
+        System.setProperty("field", "junit");
+        Application.main(new String[1]);
+    }
 }
