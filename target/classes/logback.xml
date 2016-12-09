@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="devHome" value="/home/rajasekhar/logs"/>
+    <property name="devHome" value="${user.home}/logs"/>
 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -46,12 +46,12 @@
         </rollingPolicy>
     </appender>
 
-    <logger name="com.willyweather" level="info" additivity="false">
+    <logger name="com.willyweather" level="debug" additivity="false">
         <appender-ref ref="fileAudit"/>
         <appender-ref ref="stdout"/>
     </logger>
 
-    <root level="info">
+    <root level="debug">
         <appender-ref ref="fileError"/>
     </root>
 </configuration>

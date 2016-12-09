@@ -1,5 +1,6 @@
 com/willyweather/assignment/processors/MeanDewPointProcessor.class
 com/willyweather/assignment/FileReader.class
+com/willyweather/assignment/processors/MinTemperatureProcessor.class
 META-INF/spring-configuration-metadata.json
 com/willyweather/assignment/Headers.class
 com/willyweather/assignment/exceptions/DataProcessingException.class
@@ -13,6 +14,7 @@ com/willyweather/assignment/ApplicationConfiguration.class
 com/willyweather/assignment/WeatherDataProcessorImpl.class
 com/willyweather/assignment/WeatherDataProcessor.class
 com/willyweather/assignment/processors/AbstractProcessor.class
+com/willyweather/assignment/processors/MaxTemperatureProcessor.class
 com/willyweather/assignment/processors/FieldProcessorFactory.class
 com/willyweather/assignment/FileExtractor.class
 com/willyweather/assignment/Application.class

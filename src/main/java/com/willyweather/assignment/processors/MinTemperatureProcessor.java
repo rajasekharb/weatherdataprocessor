@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author Rajasekhar
  */
-@Component
+@Component(value = "MIN")
 public class MinTemperatureProcessor extends AbstractProcessor{
 
     @Override
@@ -23,7 +23,7 @@ public class MinTemperatureProcessor extends AbstractProcessor{
             String minTemperature = weatherDataModel.getMinTemperature();
             //Remove the last asterisk
             minTemperature = minTemperature.substring(0, minTemperature.length() - 1);
-            stringBuilder.append(round(Float.parseFloat(minTemperature))).append(",");
+            stringBuilder.append(round(Float.parseFloat(minTemperature))).append(" ");
         }
 
         return stringBuilder.toString();

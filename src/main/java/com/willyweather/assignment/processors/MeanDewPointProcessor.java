@@ -22,7 +22,7 @@ public class MeanDewPointProcessor extends AbstractProcessor {
         for (WeatherDataModel weatherDataModel : weatherDataModelList) {
             final String meanDewPoint = weatherDataModel.getMeanDewPoint();
             final String dewPoint = meanDewPoint.split(" ")[0];
-            stringBuilder.append(round(Float.parseFloat(dewPoint))).append(",");
+            stringBuilder.append(round(Float.parseFloat(dewPoint))).append(" ");
         }
 
         return stringBuilder.toString();

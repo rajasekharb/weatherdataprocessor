@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author Rajasekhar
  */
-@Component
+@Component(value = "MAX")
 public class MaxTemperatureProcessor extends AbstractProcessor {
 
     @Override
@@ -23,7 +23,7 @@ public class MaxTemperatureProcessor extends AbstractProcessor {
             String maxTemperature = weatherDataModel.getMaxTemperature();
             //Remove the last asterisk
             maxTemperature = maxTemperature.substring(0, maxTemperature.length() - 1);
-            stringBuilder.append(round(Float.parseFloat(maxTemperature))).append(",");
+            stringBuilder.append(round(Float.parseFloat(maxTemperature))).append(" ");
         }
 
         return stringBuilder.toString();

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public abstract class AbstractProcessor implements FieldProcessor {
 
     int round(float value) {
-        final double ceil = Math.ceil(value);
+        final double ceil = Math.round(value);
         return (int) ceil;
     }
 }

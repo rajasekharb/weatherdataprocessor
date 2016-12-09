@@ -1,5 +1,6 @@
 package com.willyweather.assignment;
 
+import com.willyweather.assignment.exceptions.DataProcessingException;
 import com.willyweather.assignment.exceptions.FileExtractionException;
 import com.willyweather.assignment.model.HistoricalWeatherData;
 import com.willyweather.assignment.processors.FieldProcessor;
@@ -62,7 +63,11 @@ class WeatherDataProcessorImpl implements WeatherDataProcessor {
                 (weatherDataFile);
         final FieldProcessor fieldProcessor = this.fieldProcessorFactory.getProcessor(argument);
 
-        return fieldProcessor.process(historicalWeatherData);
+        try {
+            return fieldProcessor.process(historicalWeatherData);
+        } catch (NumberFormatException ex) {
+            throw new DataProcessingException("Exception occurred while processing data", ex);
+        }
     }
 
     private void validateArgument(String argument) {
