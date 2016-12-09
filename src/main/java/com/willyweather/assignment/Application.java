@@ -25,8 +25,8 @@ public class Application implements CommandLineRunner {
     public void run(String... strings) throws Exception {
         final String processedData = this.weatherDataProcessor.getProcessedData();
         if (logger.isInfoEnabled()) {
-            logger.info("Result of Processing \n" + processedData);
+            logger.info("Result of Processing is ");
         }
-        System.out.println("Result of Processing \n" + processedData);
+        System.out.println(processedData);
     }
 }
