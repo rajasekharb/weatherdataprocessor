@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author Rajasekhar
  */
-public class HistoricalWeatherData {
+public class WeatherData {
 
     private List<WeatherDataModel> weatherDataModelList;
 
@@ -19,7 +19,7 @@ public class HistoricalWeatherData {
 
     @Override
     public String toString() {
-        return "HistoricalWeatherData{" +
+        return "WeatherData{" +
                 "weatherDataModelList=" + weatherDataModelList +
                 '}';
     }

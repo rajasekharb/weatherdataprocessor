@@ -3,21 +3,17 @@ package com.willyweather.assignment;
 /**
  * @author Rajasekhar
  */
-public enum Headers {
+enum Headers {
 
     STN("STN"), WBAN("WBAN"), YEARMODA("YEARMODA"), TEMP("TEMP"), DEWP("DEWP"),
     SLP("SLP"), STP("STP"), VISIB("VISIB"),
     WDSP("WDSP"), MXSPD("MXSPD"), GUST("GUST"), MAX("MAX"), MIN("MIN"),
     PRCP("PRCP"), SNDP("SNDP"), FRSHTT("FRSHTT");
 
-    private String name;
+    private final String name;
 
     Headers(String name) {
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public static boolean isValid(String argument) {
@@ -27,5 +23,9 @@ public enum Headers {
             }
         }
         return false;
+    }
+
+    private String getName() {
+        return name;
     }
 }

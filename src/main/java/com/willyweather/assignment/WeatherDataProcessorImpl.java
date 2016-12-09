@@ -2,27 +2,23 @@ package com.willyweather.assignment;
 
 import com.willyweather.assignment.exceptions.DataProcessingException;
 import com.willyweather.assignment.exceptions.FileExtractionException;
-import com.willyweather.assignment.model.HistoricalWeatherData;
+import com.willyweather.assignment.model.WeatherData;
 import com.willyweather.assignment.processors.FieldProcessor;
 import com.willyweather.assignment.processors.FieldProcessorFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.io.File;
 
 /**
  * @author Rajasekhar
  */
-@Component
 class WeatherDataProcessorImpl implements WeatherDataProcessor {
 
-    private final FileDownloader fileDownloader;
+    private final Downloader fileDownloader;
     private final FileExtractor fileExtractor;
     private final FileReader fileReader;
     private final FieldProcessorFactory fieldProcessorFactory;
 
-    @Autowired
-    public WeatherDataProcessorImpl(FileDownloader fileDownloader, FileExtractor fileExtractor,
+    public WeatherDataProcessorImpl(Downloader fileDownloader, FileExtractor fileExtractor,
                                     FieldProcessorFactory fieldProcessorFactory, FileReader
                                             fileReader) {
         this.fileDownloader = fileDownloader;
@@ -51,12 +47,12 @@ class WeatherDataProcessorImpl implements WeatherDataProcessor {
     }
 
     private String processFile(File weatherDataFile, String argument) {
-        HistoricalWeatherData historicalWeatherData = this.fileReader.getHistoricalWeatherData
+        WeatherData weatherData = this.fileReader.getWeatherData
                 (weatherDataFile);
         final FieldProcessor fieldProcessor = this.fieldProcessorFactory.getProcessor(argument);
 
         try {
-            return fieldProcessor.process(historicalWeatherData);
+            return fieldProcessor.process(weatherData);
         } catch (NumberFormatException ex) {
             throw new DataProcessingException("Exception occurred while processing data", ex);
         }

@@ -1,26 +1,16 @@
 package com.willyweather.assignment;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-@SpringBootApplication
-public class Application implements CommandLineRunner {
-
-    private final WeatherDataProcessor weatherDataProcessor;
-
-    @Autowired
-    public Application(WeatherDataProcessor weatherDataProcessor) {
-        this.weatherDataProcessor = weatherDataProcessor;
-    }
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-
-    public void run(String... strings) throws Exception {
-        final String processedData = this.weatherDataProcessor.getProcessedData();
-        System.out.println("Result is " + processedData);
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext
+                ("applicationContext.xml");
+        final WeatherDataProcessor dataProcessor = applicationContext.getBean
+                (WeatherDataProcessor.class);
+        final String processedData = dataProcessor.getProcessedData();
+        System.out.println("Processed result is " + processedData);
     }
 }

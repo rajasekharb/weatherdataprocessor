@@ -5,6 +5,43 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <context:property-placeholder location="classpath:config.properties"/>
     <context:component-scan base-package="com.willyweather.assignment"/>
     <aop:aspectj-autoproxy/>
+
+    <bean id="fileDownloader" class="com.willyweather.assignment.FileDownloader">
+        <constructor-arg name="url" value="${com.willyweather.assignment.url}"/>
+        <constructor-arg name="extractLocation"
+                         value="${com.willyweather.assignment.extractLocation}"/>
+        <constructor-arg name="filename" value="${com.willyweather.assignment.filename}"/>
+    </bean>
+
+    <bean id="fileExtractor" class="com.willyweather.assignment.GzFileExtractor"/>
+
+    <bean id="applicationContextProvider"
+          class="com.willyweather.assignment.ApplicationContextProvider"/>
+
+    <bean id="fieldProcessorFactory"
+          class="com.willyweather.assignment.processors.FieldProcessorFactory">
+        <constructor-arg ref="applicationContextProvider"/>
+    </bean>
+
+    <bean id="fileReader" class="com.willyweather.assignment.OpFileReader"/>
+
+    <bean id="dataProcessor" class="com.willyweather.assignment.WeatherDataProcessorImpl">
+        <constructor-arg name="fileDownloader" ref="fileDownloader"/>
+        <constructor-arg name="fileExtractor" ref="fileExtractor"/>
+        <constructor-arg name="fileReader" ref="fileReader"/>
+        <constructor-arg name="fieldProcessorFactory" ref="fieldProcessorFactory"/>
+    </bean>
+
+    <!--All the field processors should go here-->
+    <bean id="temp"
+          class="com.willyweather.assignment.processors.TemperatureProcessor"/>
+    <bean id="dewp"
+          class="com.willyweather.assignment.processors.MeanDewPointProcessor"/>
+    <bean id="min"
+          class="com.willyweather.assignment.processors.MinTemperatureProcessor"/>
+    <bean id="max"
+          class="com.willyweather.assignment.processors.MaxTemperatureProcessor"/>
 </beans>

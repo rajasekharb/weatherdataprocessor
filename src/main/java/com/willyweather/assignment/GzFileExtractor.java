@@ -1,7 +1,6 @@
 package com.willyweather.assignment;
 
 import com.willyweather.assignment.exceptions.FileExtractionException;
-import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,7 +11,6 @@ import java.util.zip.GZIPInputStream;
 /**
  * @author Rajasekhar
  */
-@Component
 class GzFileExtractor implements FileExtractor {
 
     @Override

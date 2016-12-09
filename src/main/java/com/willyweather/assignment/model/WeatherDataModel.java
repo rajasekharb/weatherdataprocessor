@@ -3,7 +3,7 @@ package com.willyweather.assignment.model;
 /**
  * @author Rajasekhar
  */
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings("unused")
 public class WeatherDataModel {
 
     private String stationNumber;

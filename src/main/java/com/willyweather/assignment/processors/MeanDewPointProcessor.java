@@ -1,20 +1,18 @@
 package com.willyweather.assignment.processors;
 
-import com.willyweather.assignment.model.HistoricalWeatherData;
+import com.willyweather.assignment.model.WeatherData;
 import com.willyweather.assignment.model.WeatherDataModel;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * @author Rajasekhar
  */
-@Component(value = "DEWP")
 public class MeanDewPointProcessor extends AbstractProcessor {
 
     @Override
-    public String process(HistoricalWeatherData historicalWeatherData) {
-        final List<WeatherDataModel> weatherDataModelList = historicalWeatherData
+    public String process(WeatherData weatherData) {
+        final List<WeatherDataModel> weatherDataModelList = weatherData
                 .getWeatherDataModelList();
 
         StringBuilder stringBuilder = new StringBuilder();

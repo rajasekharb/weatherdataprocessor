@@ -1,12 +1,12 @@
 package com.willyweather.assignment.processors;
 
-import com.willyweather.assignment.model.HistoricalWeatherData;
+import com.willyweather.assignment.model.WeatherData;
 
 /**
  * @author Rajasekhar
  */
 public interface FieldProcessor {
 
-    String process(HistoricalWeatherData historicalWeatherData);
+    String process(WeatherData weatherData);
 
 }
