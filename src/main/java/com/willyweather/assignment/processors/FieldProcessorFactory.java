@@ -17,6 +17,7 @@ public class FieldProcessorFactory {
     }
 
     public FieldProcessor getProcessor(String argument) {
+        //With the same column name if a bean is configured then use it to process data
         final ApplicationContext applicationContext = this.contextProvider.getApplicationContext();
         final Object bean = applicationContext.getBean(argument.toLowerCase());
         if (bean == null) {
