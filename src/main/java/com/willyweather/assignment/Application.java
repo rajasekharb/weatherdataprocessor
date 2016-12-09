@@ -12,5 +12,7 @@ public class Application {
                 (WeatherDataProcessor.class);
         final String processedData = dataProcessor.getProcessedData();
         System.out.println("Processed result is " + processedData);
+
+        ((ClassPathXmlApplicationContext) applicationContext).close();
     }
 }

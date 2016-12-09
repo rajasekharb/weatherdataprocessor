@@ -8,6 +8,8 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 /**
  * @author Rajasekhar
  */
@@ -19,6 +21,7 @@ class LoggerAspect {
     public void beforeAdvice(JoinPoint joinPoint) {
         System.out.println(String.format("Executing : %s() method of %s",
                 joinPoint.getSignature().getName(), AopUtils.getTargetClass(joinPoint.getThis())));
+        System.out.println("Method arguments are " + Arrays.toString(joinPoint.getArgs()));
     }
 
     @AfterReturning(pointcut = "within(com.willyweather..*)", returning = "result")
