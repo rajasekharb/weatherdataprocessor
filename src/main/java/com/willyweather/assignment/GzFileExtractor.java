@@ -20,7 +20,7 @@ class GzFileExtractor implements FileExtractor {
         final File destination = getDestination(source);
 
         byte[] buffer = new byte[1024];
-
+        //Resources are closed by try-with
         try (final GZIPInputStream inputStream = new GZIPInputStream(new FileInputStream(source));
              final FileOutputStream outputStream = new FileOutputStream(destination)) {
 

@@ -1,8 +1,9 @@
 package com.willyweather.assignment.processors;
 
-import com.willyweather.assignment.utils.ApplicationContextProvider;
 import com.willyweather.assignment.exceptions.DataProcessingException;
+import com.willyweather.assignment.utils.ApplicationContextProvider;
 import org.springframework.aop.support.AopUtils;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 
 /**
@@ -19,7 +20,14 @@ public class FieldProcessorFactory {
     public FieldProcessor getProcessor(String argument) {
         //With the same column name if a bean is configured then use it to process data
         final ApplicationContext applicationContext = this.contextProvider.getApplicationContext();
-        final Object bean = applicationContext.getBean(argument.toLowerCase());
+        final Object bean;
+        try {
+            bean = applicationContext.getBean(argument.toLowerCase());
+        } catch (NoSuchBeanDefinitionException ex) {
+            throw new DataProcessingException("No such processor defined in the spring context.",
+                    ex);
+        }
+
         if (bean == null) {
             throw new DataProcessingException("No such processor defined in the spring context.");
         }

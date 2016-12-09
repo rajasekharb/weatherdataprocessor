@@ -3,6 +3,8 @@ package com.willyweather.assignment;
 import com.willyweather.assignment.exceptions.DataProcessingException;
 import com.willyweather.assignment.model.WeatherData;
 import com.willyweather.assignment.model.WeatherDataModel;
+import com.willyweather.assignment.utils.ApplicationContextProvider;
+import org.springframework.context.ApplicationContext;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -16,9 +18,18 @@ import java.util.List;
  */
 class OpFileReader implements FileReader {
 
+    private final ApplicationContextProvider contextProvider;
+
+    public OpFileReader(ApplicationContextProvider contextProvider) {
+        this.contextProvider = contextProvider;
+    }
+
+    //Reads one line at a time ignoring the header. Populates a list of all rows
     @Override
     public WeatherData getWeatherData(File weatherDataFile) {
-        WeatherData weatherData = new WeatherData();
+        final ApplicationContext applicationContext = this.contextProvider.getApplicationContext();
+        WeatherData weatherData = applicationContext.getBean(WeatherData.class);
+
         List<WeatherDataModel> weatherDataModelList = new ArrayList<>();
         weatherData.setWeatherDataModelList(weatherDataModelList);
 
@@ -39,7 +50,8 @@ class OpFileReader implements FileReader {
                             "lines of the input is incorrect.");
                 }
 
-                WeatherDataModel weatherDataModel = new WeatherDataModel();
+                WeatherDataModel weatherDataModel = applicationContext.getBean(WeatherDataModel
+                        .class);
 
                 final String stationNumber = values[0];
                 final int weatherBureauAirForceNavy = Integer.parseInt(values[1]);

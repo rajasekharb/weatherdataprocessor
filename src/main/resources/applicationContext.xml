@@ -29,7 +29,9 @@
         <constructor-arg name="contextProvider" ref="applicationContextProvider"/>
     </bean>
 
-    <bean id="fileReader" class="com.willyweather.assignment.OpFileReader"/>
+    <bean id="fileReader" class="com.willyweather.assignment.OpFileReader">
+        <constructor-arg name="contextProvider" ref="applicationContextProvider"/>
+    </bean>
 
     <bean id="dataProcessor" class="com.willyweather.assignment.WeatherDataProcessorImpl">
         <constructor-arg name="fileDownloader" ref="fileDownloader"/>
