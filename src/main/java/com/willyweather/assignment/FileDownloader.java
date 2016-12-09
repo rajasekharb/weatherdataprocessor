@@ -15,12 +15,17 @@ class FileDownloader implements Downloader {
 
     private final String url;
     private final String filename;
+    private final int connectionTimeout;
+    private final int readTimeout;
     private String extractLocation;
 
-    public FileDownloader(String url, String extractLocation, String filename) {
+    public FileDownloader(String url, String extractLocation, String filename, int
+            connectionTimeout, int readTimeout) {
         this.url = url;
         this.extractLocation = extractLocation;
         this.filename = filename;
+        this.connectionTimeout = connectionTimeout;
+        this.readTimeout = readTimeout;
     }
 
     //Downloads from internet
@@ -40,7 +45,8 @@ class FileDownloader implements Downloader {
         File destination = new File(this.extractLocation + File.separator + this.filename);
 
         try {
-            FileUtils.copyURLToFile(downloadUrl, destination);
+            FileUtils.copyURLToFile(downloadUrl, destination, this.connectionTimeout, this
+                    .readTimeout);
         } catch (IOException ex) {
             throw new FileDownloadException(String.format("An exception occurred while " +
                     "downloading the file from %s", this.url), ex);

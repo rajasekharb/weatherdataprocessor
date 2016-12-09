@@ -14,6 +14,9 @@
         <constructor-arg name="extractLocation"
                          value="${com.willyweather.assignment.extractLocation}"/>
         <constructor-arg name="filename" value="${com.willyweather.assignment.filename}"/>
+        <constructor-arg name="connectionTimeout"
+                         value="${com.willyweather.assignment.connectionTimeout}"/>
+        <constructor-arg name="readTimeout" value="${com.willyweather.assignment.readTimeout}"/>
     </bean>
 
     <bean id="fileExtractor" class="com.willyweather.assignment.GzFileExtractor"/>
