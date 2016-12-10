@@ -61,7 +61,9 @@ class WeatherDataProcessorImpl implements WeatherDataProcessor {
 
     private void validateArgument(String argument) {
         if (argument == null || "".equals(argument.trim())) {
-            throw new IllegalArgumentException("Argument can't be null or empty");
+            throw new IllegalArgumentException("Argument can't be null or empty. Please try " +
+                    "passing -Dfield={TEMP | DEWP | MIN | MAX} before jar file name in the " +
+                    "command. For example:  java -jar -Dfield=DEWP TestProject.jar");
         }
 
         if (!Headers.isValid(argument)) {
