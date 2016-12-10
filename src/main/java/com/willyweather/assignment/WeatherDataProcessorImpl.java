@@ -1,12 +1,14 @@
 package com.willyweather.assignment;
 
 import com.willyweather.assignment.exceptions.DataProcessingException;
+import com.willyweather.assignment.exceptions.FileDownloadException;
 import com.willyweather.assignment.exceptions.FileExtractionException;
 import com.willyweather.assignment.model.WeatherData;
 import com.willyweather.assignment.processors.FieldProcessor;
 import com.willyweather.assignment.processors.FieldProcessorFactory;
 
 import java.io.File;
+import java.net.URL;
 
 /**
  * @author Rajasekhar
@@ -29,8 +31,16 @@ class WeatherDataProcessorImpl implements WeatherDataProcessor {
     }
 
     public String getProcessedData() {
-        //First download the file
-        final File downloadedFile = this.fileDownloader.downloadFile();
+        //First download the file, if the google docs link has expired then try to load the file
+        //from the classpath
+        File downloadedFile;
+        try {
+            downloadedFile = this.fileDownloader.downloadFile();
+        } catch (FileDownloadException ex) {
+            ex.printStackTrace();
+            downloadedFile = getFileFromClasspath();
+        }
+
 
         //Extract the file and get the actual file that consists of the weather data
         //with the FileExtractor implementation.
@@ -45,6 +55,20 @@ class WeatherDataProcessorImpl implements WeatherDataProcessor {
         validateArgument(argument);
 
         return processFile(weatherDataFile, argument);
+    }
+
+    private File getFileFromClasspath() {
+        System.out.println("Loading the file from classpath as download is not successful");
+        final URL resource = getClass().getClassLoader().getResource("007034-99999-2012.op.gz");
+        String path = null;
+        if (resource != null) {
+            path = resource.getPath();
+        }
+
+        if (path == null || "".equals(path.trim())) {
+            throw new FileDownloadException("Failed to load the file from classpath as well");
+        }
+        return new File(path);
     }
 
     private String processFile(File weatherDataFile, String argument) {
