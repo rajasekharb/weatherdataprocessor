@@ -6,8 +6,10 @@ import com.willyweather.assignment.exceptions.FileExtractionException;
 import com.willyweather.assignment.model.WeatherData;
 import com.willyweather.assignment.processors.FieldProcessor;
 import com.willyweather.assignment.processors.FieldProcessorFactory;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 /**
@@ -59,16 +61,21 @@ class WeatherDataProcessorImpl implements WeatherDataProcessor {
 
     private File getFileFromClasspath() {
         System.out.println("Loading the file from classpath as download is not successful");
-        final URL resource = getClass().getClassLoader().getResource("007034-99999-2012.op.gz");
-        String path = null;
-        if (resource != null) {
-            path = resource.getPath();
-        }
+        final String name = "007034-99999-2012.op.gz";
+        final URL resource = getClass().getClassLoader().getResource(name);
 
-        if (path == null || "".equals(path.trim())) {
+        if (resource == null) {
             throw new FileDownloadException("Failed to load the file from classpath as well");
         }
-        return new File(path);
+
+        try {
+            final String tempDirectory = System.getProperty("java.io.tmpdir");
+            final File destDir = new File(tempDirectory + File.separator + name);
+            FileUtils.copyURLToFile(resource, destDir);
+            return destDir;
+        } catch (IOException ex) {
+            throw new FileDownloadException("IOException while copying file", ex);
+        }
     }
 
     private String processFile(File weatherDataFile, String argument) {
