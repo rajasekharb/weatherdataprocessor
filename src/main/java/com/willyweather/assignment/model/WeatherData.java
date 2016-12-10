@@ -1,7 +1,5 @@
 package com.willyweather.assignment.model;
 
-import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 /**
@@ -9,7 +7,6 @@ import java.util.List;
  *
  * @author Rajasekhar
  */
-@Component
 public class WeatherData {
 
     private List<WeatherDataModel> weatherDataModelList;

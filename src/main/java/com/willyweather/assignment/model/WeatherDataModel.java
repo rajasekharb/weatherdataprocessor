@@ -1,16 +1,11 @@
 package com.willyweather.assignment.model;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 /**
  * A pojo class to hold one row of the data file
  *
  * @author Rajasekhar
  */
 @SuppressWarnings("unused")
-@Component
-@Scope(value = "prototype")
 public class WeatherDataModel {
 
     private String stationNumber;

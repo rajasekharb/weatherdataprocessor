@@ -40,6 +40,10 @@
         <constructor-arg name="fieldProcessorFactory" ref="fieldProcessorFactory"/>
     </bean>
 
+    <bean id="model" class="com.willyweather.assignment.model.WeatherDataModel" scope="prototype"/>
+
+    <bean id="weatherData" class="com.willyweather.assignment.model.WeatherData"/>
+
     <!--All the field processors should go here-->
     <bean id="temp"
           class="com.willyweather.assignment.processors.TemperatureProcessor"/>
