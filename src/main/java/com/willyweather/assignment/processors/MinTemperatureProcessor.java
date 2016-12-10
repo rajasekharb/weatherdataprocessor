@@ -22,7 +22,9 @@ public class MinTemperatureProcessor extends AbstractProcessor {
         for (WeatherDataModel weatherDataModel : weatherDataModelList) {
             String minTemperature = weatherDataModel.getMinTemperature();
             //Remove the last asterisk
-            minTemperature = minTemperature.substring(0, minTemperature.length() - 1);
+            if (minTemperature.endsWith("*")) {
+                minTemperature = minTemperature.substring(0, minTemperature.length() - 1);
+            }
             stringBuilder.append(round(Float.parseFloat(minTemperature))).append(" ");
         }
 

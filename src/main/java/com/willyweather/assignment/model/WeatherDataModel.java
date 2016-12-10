@@ -14,7 +14,7 @@ public class WeatherDataModel {
 
     private int yearMonthDay;
 
-    private String meanMeanTemperature;
+    private String meanTemperature;
 
     private String meanDewPoint;
 
@@ -67,12 +67,12 @@ public class WeatherDataModel {
         return this;
     }
 
-    public String getMeanMeanTemperature() {
-        return meanMeanTemperature;
+    public String getMeanTemperature() {
+        return meanTemperature;
     }
 
-    public WeatherDataModel setMeanMeanTemperature(String meanMeanTemperature) {
-        this.meanMeanTemperature = meanMeanTemperature;
+    public WeatherDataModel setMeanTemperature(String meanTemperature) {
+        this.meanTemperature = meanTemperature;
         return this;
     }
 
@@ -200,8 +200,8 @@ public class WeatherDataModel {
         if (stationNumber != null ? !stationNumber.equals(that.stationNumber) : that
                 .stationNumber != null)
             return false;
-        if (meanMeanTemperature != null ? !meanMeanTemperature.equals(that.meanMeanTemperature) :
-                that.meanMeanTemperature != null)
+        if (meanTemperature != null ? !meanTemperature.equals(that.meanTemperature) :
+                that.meanTemperature != null)
             return false;
         if (meanDewPoint != null ? !meanDewPoint.equals(that.meanDewPoint) : that.meanDewPoint !=
                 null)
@@ -238,7 +238,7 @@ public class WeatherDataModel {
         int result = stationNumber != null ? stationNumber.hashCode() : 0;
         result = 31 * result + weatherBureauAirForceNavy;
         result = 31 * result + yearMonthDay;
-        result = 31 * result + (meanMeanTemperature != null ? meanMeanTemperature.hashCode() : 0);
+        result = 31 * result + (meanTemperature != null ? meanTemperature.hashCode() : 0);
         result = 31 * result + (meanDewPoint != null ? meanDewPoint.hashCode() : 0);
         result = 31 * result + (seaLevelPressure != null ? seaLevelPressure.hashCode() : 0);
         result = 31 * result + (meanStationPressure != null ? meanStationPressure.hashCode() : 0);
@@ -263,7 +263,7 @@ public class WeatherDataModel {
                 "stationNumber='" + stationNumber + '\'' +
                 ", weatherBureauAirForceNavy=" + weatherBureauAirForceNavy +
                 ", yearMonthDay=" + yearMonthDay +
-                ", meanMeanTemperature='" + meanMeanTemperature + '\'' +
+                ", meanTemperature='" + meanTemperature + '\'' +
                 ", meanDewPoint='" + meanDewPoint + '\'' +
                 ", seaLevelPressure='" + seaLevelPressure + '\'' +
                 ", meanStationPressure='" + meanStationPressure + '\'' +

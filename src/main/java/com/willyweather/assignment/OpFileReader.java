@@ -74,7 +74,7 @@ class OpFileReader implements FileReader {
 
                 weatherDataModel = weatherDataModel.setStationNumber(stationNumber)
                         .setWeatherBureauAirForceNavy(weatherBureauAirForceNavy)
-                        .setYearMonthDay(yearMonthDay).setMeanMeanTemperature(meanTemperature)
+                        .setYearMonthDay(yearMonthDay).setMeanTemperature(meanTemperature)
                         .setMeanDewPoint(meanDewPoint).setSeaLevelPressure(seaLevelPressure)
                         .setMeanStationPressure(meanStationPressure).setVisibility(visibility)
                         .setMeanWindSpeed(meanWindSpeed)

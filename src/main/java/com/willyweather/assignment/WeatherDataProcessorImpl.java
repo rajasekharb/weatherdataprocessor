@@ -43,7 +43,6 @@ class WeatherDataProcessorImpl implements WeatherDataProcessor {
             downloadedFile = getFileFromClasspath();
         }
 
-
         //Extract the file and get the actual file that consists of the weather data
         //with the FileExtractor implementation.
         final File weatherDataFile = this.fileExtractor.unzip(downloadedFile);

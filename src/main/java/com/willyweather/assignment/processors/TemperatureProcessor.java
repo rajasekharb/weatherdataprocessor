@@ -20,7 +20,7 @@ public class TemperatureProcessor extends AbstractProcessor {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (WeatherDataModel weatherDataModel : weatherDataModelList) {
-            final String meanMeanTemperature = weatherDataModel.getMeanMeanTemperature();
+            final String meanMeanTemperature = weatherDataModel.getMeanTemperature();
             final String temperature = meanMeanTemperature.split(" ")[0];
             stringBuilder.append(round(Float.parseFloat(temperature))).append(" ");
         }
